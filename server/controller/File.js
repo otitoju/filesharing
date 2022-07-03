@@ -15,9 +15,10 @@ class File {
             }
 
             const file = await Model.create(fileData);
+            const fileLink = req.body.password ? `http://localhost:3000/file/secure/${file.id}` : `http://localhost:3000/file/${file.id}`
             return res.json({
                 file,
-                fileLink: `http://localhost:4000/file/${file.id}`
+                fileLink
             });
 
         } catch (error) {
@@ -61,7 +62,7 @@ class File {
     static async updateFile(req, res) {
         try {
             const { fileId } = req.params;
-            const file = await Model.findOne({ id: fileId });
+            const file = await Model.findOne({ _id: fileId });
             if(!file) {
                 res.json({
                     message: "File does not exist"
@@ -86,7 +87,7 @@ class File {
     static async deleteFile(req, res) {
         try {
             const { fileId } = req.params;
-            const file = await Model.findOneAndDelete({ id: fileId });
+            const file = await Model.findOneAndDelete({ _id: fileId });
             if(!file) {
                 return res.json({
                     message: "File not found"
@@ -105,7 +106,8 @@ class File {
     static async getFile(req, res) {
         try {
             const { fileId } = req.params;
-            const file = await Model.findOne({ id: fileId });
+            const file = await Model.findOne({ _id: fileId });
+            console.log(fileId)
             if(!file) {
                 return res.json({
                     message: "File not found"
