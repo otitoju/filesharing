@@ -1,0 +1,38 @@
+
+.heading-info {
+    font-weight: bold;
+    font-family: "Bolt-Semibold";
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.free {
+    height: 400px;
+    border-radius: 12px;
+    background-color: #042646;
+    margin: 20px;
+}
+
+.pro {
+    height: 400px;
+    border-radius: 12px;
+    background-color: #fff;
+    color: #042646;
+}
+
+h2 {
+    font-weight: bold;
+}
+
+h3 {
+    font-weight: bold;
+}
+
+li {
+    margin: 15px;
+}
+

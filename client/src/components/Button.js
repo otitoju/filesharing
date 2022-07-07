@@ -6,6 +6,7 @@ function Button(props) {
                 id="btn"
                 className={props.btnClass}
                 onClick={props.onClick}
+                disabled={props.disabled}
             ><i className={props.iconName} aria-hidden="true"></i> {props.btnName}</button>
         </div>
     );

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Input from '../components/Input';
 import Button from '../components/Button';
 import { useParams } from 'react-router-dom';
