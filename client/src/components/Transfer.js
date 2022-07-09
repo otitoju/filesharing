@@ -3,6 +3,7 @@ import { uploadFile } from '../API/api';
 import Alert from './Alert';
 import Modal from './Modal';
 import Response from './Response';
+import copy from "copy-to-clipboard";  
 
 const Transfer = () => {
     const ownerInput = useRef();
@@ -14,7 +15,9 @@ const Transfer = () => {
     const [alert, setAlert] = useState(false);
     const [variant, setVariant] = useState("");
     const [color, setColor] = useState("");
-    const [showModal, setShowModal] = useState(true);
+    const [showModal, setShowModal] = useState(false);
+    const [link, setLink] = useState("");
+    const [copied, setCopied] = useState(false);
 
     function handleShare(e) {
         e.preventDefault();
@@ -38,14 +41,26 @@ const Transfer = () => {
             formData.append('file', files);
             const upload = uploadFile(formData);
             console.log(upload);
+            setLink("https://www.c-sharpcorner.com/article/how-to-copy-text-to-clipboard-using-reactjs/");
             setShowModal(true)
         }
+    }
+
+    const closeModal = (e) => {
+        e.preventDefault();
+        setShowModal(false);
+        setCopied(false);
+    }
+
+    const handleCopy = (e) => {
+        setCopied(true);
+        copy(link);
     }
 
     return (
         <div>
             <Modal show={showModal}>
-                <Response/>
+                <Response text={link} closeClick={closeModal} copied={copied} copyClick={handleCopy}/>
             </Modal>
             {alert && <Alert message={message} variant={variant} color={color} onClick={() => { setAlert(false) }} />}
             <h1 className='text-center pt-3'>The Simplest way and secure your file across the internet.</h1>
