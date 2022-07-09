@@ -1,4 +1,3 @@
-import { uploadStart, uploadSuccess, getUploadFile } from "../Redux/fileSlice";
 
 const baseURL = "http://localhost:4000";
 
@@ -23,14 +22,12 @@ export async function downloadFile(fileId) {
 }
 
 
-export async function uploadFile(dispatch, file) {
+export async function uploadFile(file) {
     try {
-        dispatch(uploadStart());
         const res = await fetch(`${baseURL}/upload`, { method: "POST", body: file })
         .then(res => res.json());
-        return dispatch(uploadSuccess(res));
+        return res;
     } catch (error) {
-        //dispatch(uploadFailure()) 
         throw error;
     }
 }

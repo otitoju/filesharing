@@ -15,6 +15,7 @@
     border-radius: 12px;
     background-color: #042646;
     margin: 20px;
+    cursor: pointer;
 }
 
 .pro {
@@ -22,6 +23,16 @@
     border-radius: 12px;
     background-color: #fff;
     color: #042646;
+    cursor: pointer;
+}
+
+.premium {
+    height: 400px;
+    border-radius: 12px;
+    background-color: #044a8b;
+    color: #fff;
+    margin: 20px;
+    cursor: pointer;
 }
 
 h2 {
