@@ -1,16 +1,27 @@
 const Model = require("../model/file");
 const bcrypt = require("bcrypt");
+const cloudinary = require('cloudinary');
 
 class File {
     static async uploadFile(req, res) {
         try {
+            var image = req.file.path
+            const result = await cloudinary.uploader.upload(image)
+            var imgUrl = result.secure_url
+
             const fileData = {
                 path: req.file.path,
-                originalName: req.file.originalname,
+                originalName: imgUrl,
                 owner: req.body.owner,
             }
 
-            if(req.body.password != "" && req.body.password != null) {
+            // const fileData = {
+            //     path: req.file.path,
+            //     originalName: req.file.originalname,
+            //     owner: req.body.owner,
+            // }
+
+            if (req.body.password != "" && req.body.password != null) {
                 fileData.password = await bcrypt.hash(req.body.password, 10);
             }
 
@@ -31,20 +42,20 @@ class File {
         try {
             const { fileId } = req.params;
             const file = await Model.findOne({ _id: fileId });
-            if(!file) {
+            if (!file) {
                 res.json({
                     message: "No file found"
                 });
             }
 
-            if(file.password != null) {
-                if(req.body.password == null) {
+            if (file.password != null) {
+                if (req.body.password == null) {
                     return res.json({
                         message: "You need a password to download this file."
                     });
                 }
                 else {
-                    if(!await bcrypt.compare(req.body.password, file.password)) {
+                    if (!await bcrypt.compare(req.body.password, file.password)) {
                         res.json({
                             message: "Wrong password"
                         })
@@ -63,7 +74,7 @@ class File {
         try {
             const { fileId } = req.params;
             const file = await Model.findOne({ _id: fileId });
-            if(!file) {
+            if (!file) {
                 res.json({
                     message: "File does not exist"
                 })
@@ -88,7 +99,7 @@ class File {
         try {
             const { fileId } = req.params;
             const file = await Model.findOneAndDelete({ _id: fileId });
-            if(!file) {
+            if (!file) {
                 return res.json({
                     message: "File not found"
                 });
@@ -108,7 +119,7 @@ class File {
             const { fileId } = req.params;
             const file = await Model.findOne({ _id: fileId });
             console.log(fileId)
-            if(!file) {
+            if (!file) {
                 return res.json({
                     message: "File not found"
                 });

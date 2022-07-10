@@ -6,7 +6,7 @@ const Response = ({ closeClick, text, copyClick, copied }) => {
             <h3>Copy and send the link below to the receiver</h3>
             <hr />
             <div className='d-flex'>
-                <span className='text-muted'>{text}</span>
+                <span className='text-muted justify-content-center'>{text}</span>
                 {copied ? <i onClick={copyClick}  data-bs-toggle="tooltip" data-bs-placement="top"
                     data-bs-custom-class="custom-tooltip"
                     title="Copied" className="bi bi-clipboard-check"></i> : <i onClick={copyClick} data-bs-toggle="tooltip" data-bs-placement="top"

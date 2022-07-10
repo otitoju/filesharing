@@ -19,7 +19,7 @@ const Transfer = () => {
     const [link, setLink] = useState("");
     const [copied, setCopied] = useState(false);
 
-    function handleShare(e) {
+    async function handleShare(e) {
         e.preventDefault();
 
         const enteredOwnerInput = ownerInput.current.value;
@@ -39,9 +39,8 @@ const Transfer = () => {
             formData.append('password', enteredPasswordInput);
             formData.append('email', enteredEmailInput);
             formData.append('file', files);
-            const upload = uploadFile(formData);
-            console.log(upload);
-            setLink("https://www.c-sharpcorner.com/article/how-to-copy-text-to-clipboard-using-reactjs/");
+            const upload = await uploadFile(formData);
+            setLink(upload.fileLink);
             setShowModal(true)
         }
     }
