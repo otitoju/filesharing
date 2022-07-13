@@ -6,6 +6,7 @@ const routes = require("./route/index");
 const cors = require("cors");
 const PORT = process.env.PORT || 4000;
 const config = require('./config/env');
+const path = require('path');
 
 
 app.use((req, res, next) => {
