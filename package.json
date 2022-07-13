@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ./server/app.js",
-    "heroku-postbuild": "cd client && yarn install && npm run build"
+    "start": "node ./server/app.js"
   },
   "keywords": [],
   "author": "",

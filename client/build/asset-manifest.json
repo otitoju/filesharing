@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/static/css/main.ce3e640e.css",
+    "main.js": "/static/js/main.a74c65e3.js",
+    "static/js/787.c4e7f8f9.chunk.js": "/static/js/787.c4e7f8f9.chunk.js",
+    "static/media/travis1.jpg": "/static/media/travis1.b9a5cc788845bb54a19e.jpg",
+    "static/media/john1.jpg": "/static/media/john1.90607960527e80f8bc0d.jpg",
+    "static/media/bolt-regular.ttf": "/static/media/bolt-regular.face5afa2a798f30665f.ttf",
+    "static/media/bolt-semibold.ttf": "/static/media/bolt-semibold.57aa1dd391f0bf1081a1.ttf",
+    "static/media/Maserati.svg": "/static/media/Maserati.f79909e0b44dba815b98.svg",
+    "index.html": "/index.html",
+    "main.ce3e640e.css.map": "/static/css/main.ce3e640e.css.map",
+    "main.a74c65e3.js.map": "/static/js/main.a74c65e3.js.map",
+    "787.c4e7f8f9.chunk.js.map": "/static/js/787.c4e7f8f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ce3e640e.css",
+    "static/js/main.a74c65e3.js"
+  ]
+}
