@@ -8,11 +8,6 @@ const PORT = process.env.PORT || 4000;
 const config = require('./config/env');
 const path = require('path');
 
-app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use("/", routes);
-
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -20,14 +15,15 @@ app.use((req, res, next) => {
     next()
 });
 
-app.use(express.static("../client/build"));
+app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use("/", routes);
 
-app.get('/*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
-});
+app.use(express.static(path.join(__dirname, '../client/build')));
 
-app.get('/', (req, res) => {
-    res.send("File server");
+app.get('/*', function (req, res) {
+  res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
 });
 
 
