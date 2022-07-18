@@ -26,7 +26,6 @@ const SharedAccountPage = () => {
                 </div>
 
                 <div className='account_div col-md text-dark pt-5'>
-                    {/* <h1 className='text-center pt-5' style={{fontFamily: "Algerian", fontSize: "3rem",  letterSpacing: "0.1rem", color: 'white'}}>OJTransfer</h1> */}
                     <div className='text-center'>
                         <button style={{ boxShadow: "1px 1px #888888", marginRight: "5px" }} className='btn btn-primary btn-lg' onClick={handleLoginToggle}>Sign in</button>
                         <button style={{ boxShadow: "1px 1px #888888" }} className='btn btn-secondary btn-lg' onClick={handleRegisterToggle}>Create Account</button>

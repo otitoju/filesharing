@@ -5,7 +5,8 @@ const File = new mongoose.Schema({
     originalName: { type: String },
     owner: { type: String },
     password: { type: String },
-    downloadCount: { type: Number, default: 0 }
+    downloadCount: { type: Number, default: 0 },
+    receiver: { type: String }
 });
 
 module.exports = mongoose.model("file", File);

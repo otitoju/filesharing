@@ -33,5 +33,5 @@ app.listen(PORT, () => {
 
 const uri = `mongodb+srv://${config.db_username}:${config.password}@${config.cluster}.mongodb.net/${config.dbname}?retryWrites=true&w=majority`;
 
-mongoose.connect(uri);
-//mongoose.connect(config.local_DB);
+//mongoose.connect(uri);
+mongoose.connect(config.local_DB);

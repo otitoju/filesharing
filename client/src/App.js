@@ -1,4 +1,5 @@
 
+import { useEffect } from 'react';
 import './App.css';
 import DownloadPage from './pages/Download';
 import SharePage from './pages/Share';
@@ -10,31 +11,34 @@ import Navbar from './components/Navbar';
 import Particle from "react-tsparticles";
 import { loadFull } from "tsparticles";
 import ParticleConfig from './API/particlesConfig.json';
+import { clearConsole } from './API/utils';
 
 function App() {
+  useEffect(() => {
+    clearConsole();
+  }, []);
+
   const particlesInit = async (main) => {
     console.log(main);
-
-    // you can initialize the tsParticles instance (main) here, adding custom shapes or presets
-    // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
-    // starting from v2 you can add only the features you need reducing the bundle size
     await loadFull(main);
-};
+  };
 
-const particlesLoaded = (container) => {
-    console.log(container);
-};
+
+
+  const particlesLoaded = (container) => {
+    
+  };
   return (
     <div className="App">
       <Navbar />
       <Particle
-             options={ParticleConfig}
-              init={particlesInit} loaded={particlesLoaded} />
+        options={ParticleConfig}
+        init={particlesInit} loaded={particlesLoaded} />
       <Routes>
         <Route path='/' element={<LandingPage />} />
         <Route path='/landing' element={<SharePage />} />
         <Route path='/share' element={<SharedAccountPage />} />
-        <Route path='/download/:id' element={<DownloadPage />} />
+        <Route path='/download' element={<DownloadPage />} />
         <Route
           path="*"
           element={

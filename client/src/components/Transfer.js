@@ -4,6 +4,8 @@ import Alert from './Alert';
 import Modal from './Modal';
 import Response from './Response';
 import copy from "copy-to-clipboard";  
+import { Popup } from './Popup';
+import Tick1 from './images/tick1.png';
 
 const Transfer = () => {
     const ownerInput = useRef();
@@ -37,7 +39,7 @@ const Transfer = () => {
             const formData = new FormData();
             formData.append('owner', enteredOwnerInput);
             formData.append('password', enteredPasswordInput);
-            formData.append('email', enteredEmailInput);
+            formData.append('receiver', enteredEmailInput);
             formData.append('file', files);
             const upload = await uploadFile(formData);
             setLink(upload.fileLink);
@@ -58,12 +60,14 @@ const Transfer = () => {
 
     return (
         <div>
-            <Modal show={showModal}>
+            {/* <Modal show={showModal}>
                 <Response text={link} closeClick={closeModal} copied={copied} copyClick={handleCopy}/>
-            </Modal>
+            </Modal> */}
+
+            <Popup text={link} show={showModal} image={Tick1} closeClick={closeModal} title="File uploaded successfully" copied={copied} copyClick={handleCopy} subtitle="The file has been sent to the receiver."/>
+
             {alert && <Alert message={message} variant={variant} color={color} onClick={() => { setAlert(false) }} />}
             <h1 className='text-center pt-3'>The Simplest way and secure your file across the internet.</h1>
-            {/* <h2 className='text-center' style={{fontFamily: "Algerian", fontSize: "3rem",  letterSpacing: "0.7rem"}}>Big Data</h2> */}
 
             <div className='share_form_wrapper'>
                 <div className="row g-4">

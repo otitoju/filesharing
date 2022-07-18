@@ -7,7 +7,7 @@ export const LandingPage = () => {
     <div className='bg_color mt-5'>
         <div className='container p-5 mt-3'>
             <h1 className='heading-info text-center'>You've got what to share, we've got the platform.</h1>
-            <p className='d-flex justify-content-center text-align-center'>Whether you're sending large files or small files for fun, delivering work for clients-keep creative projects moving around the world with OJTransfer.</p>
+            <p className='d-flex justify-content-center text-align-center text-center'>Whether you're sending large files or small files for fun, delivering work for clients-keep creative projects moving around the world with OJTransfer.</p>
             <div className='wrapper row pt-2'>
                 {/* Free package */}
                 <div className='col-md free'>

@@ -13,13 +13,6 @@ cloudinary.config({
 })
 
 const storage = multer.diskStorage({
-    // destination: (req, file, cb) => {
-    //     if (file.mimetype === "image/jpeg" || file.mimetype === "image/jpg" || file.mimetype === "image/png" || file.mimetype === "video/mp4") {
-    //         cb(null, path.join(__dirname, "../files"));
-    //     } else {
-    //         cb({ message: "This file is not an image file" }, false);
-    //     }
-    // },
     filename: function (req, file, cb) {
         cb(null, Date.now() + file.originalname)
     }
@@ -36,7 +29,6 @@ const fileFilter = function (req, file, cb) {
 const upload = multer({
     storage: storage,
     limits: { 
-        fieldNameSize: 200,
         fileSize: 10 * 1024 * 1024, 
     },
     fileFilter: fileFilter

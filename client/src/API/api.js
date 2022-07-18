@@ -4,7 +4,8 @@ const baseURL = "http://localhost:4000";
 export async function getFile(fileId) {
     try {
         const info = await fetch(`${baseURL}/file/single/${fileId}`, { method: "GET" })
-        //.then( res => res.json());
+        .then( res => res.json());
+        console.log(info)
         return info;
     } catch (error) {
         throw error;

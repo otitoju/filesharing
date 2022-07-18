@@ -1,7 +1,14 @@
 const Model = require("../model/file");
 const bcrypt = require("bcrypt");
 const cloudinary = require('cloudinary');
+const nodeMailer = require('nodemailer');
+const { google } = require('googleapis');
 
+
+const CLIENT_ID = '323050135199-curkaoc218tkatbu2bfmslloa4djhq73.apps.googleusercontent.com'
+const CLIENT_SECRET = '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'
+const REDIRECT_URI = 'https://developers.google.com/oauthplayground'
+const REFRESH_TOKEN = '1//04M-diCIE9YV3CgYIARAAGAQSNwF-L9IrDCqEmSj-iU8YgSG4dHjjKrElHKw7-1owtMxQHdiT2ZM-Osr6lb1ZbmLJhYHRmW4hFzM'
 class File {
     static async uploadFile(req, res) {
         try {
@@ -13,13 +20,8 @@ class File {
                 path: req.file.path,
                 originalName: imgUrl,
                 owner: req.body.owner,
+                receiver: req.body.receiver
             }
-
-            // const fileData = {
-            //     path: req.file.path,
-            //     originalName: req.file.originalname,
-            //     owner: req.body.owner,
-            // }
 
             if (req.body.password != "" && req.body.password != null) {
                 fileData.password = await bcrypt.hash(req.body.password, 10);
@@ -27,6 +29,7 @@ class File {
 
             const file = await Model.create(fileData);
             const fileLink = req.body.password ? `http://localhost:3000/file/secure/${file.id}` : `http://localhost:3000/file/${file.id}`
+
             return res.json({
                 file,
                 fileLink
