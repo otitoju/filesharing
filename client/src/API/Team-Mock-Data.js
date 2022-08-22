@@ -15,7 +15,7 @@
     },
     {
         id: 2,
-        name: "Olufemi Samuel Travis",
+        name: "TOLORUNTOMI Samuel Femi",
         picture: Travis,
         content: "UI/UX designer, Frontend Developer, Photography",
         twitter: "",
